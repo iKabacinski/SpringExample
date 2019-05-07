@@ -6,26 +6,45 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 public class Employee {
-
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
-    private String surName;
-    private BigDecimal salary;
+    private String firstName;
+    private String lastName;
+    private LocalDate employmentDate;
+    private  BigDecimal salary;
+
+
+    public LocalDate getEmploymentDate() {
+        return employmentDate;
+    }
+
+    public void setEmploymentDate(LocalDate employmentDate) {
+        this.employmentDate = employmentDate;
+    }
+
+
+    public Employee(String firstName, String lastName,BigDecimal salary, LocalDate employmentDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+        this.employmentDate = employmentDate;
+    }
+
 
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
                 '}';
     }
@@ -39,13 +58,12 @@ public class Employee {
     }
 
 
-
-    public String getSurName() {
-        return surName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public BigDecimal getSalary() {
@@ -55,19 +73,18 @@ public class Employee {
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
-    public String getName() {
-        return name;
+
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
 
     public Employee() {
     }
-
-
 
 
 }
